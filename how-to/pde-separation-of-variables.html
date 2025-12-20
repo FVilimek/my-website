@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Frank's Site - How-To</title>
+    <link href="\style.css" rel="stylesheet">
+    <link href="\images/fjv-favicon-2.png" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind Madurai">
+
+    <!-- For math symbols and equations -->
+    <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- Header at the top of every page of the website -->
+    <header>
+        <div class="columns-box">
+
+            <div>
+                <a href="\index.html"><img src="\images\fjv-favicon-2.png" alt="FJV Favicon Version 1, Pixelated Metal Plate" width="150px" height="150px"></a>
+            </div>
+
+            <div>
+                <h1 style="margin-top: 40px; margin-left: 50px">FJV's Claim - How-To</h1>
+                <h2 style="margin-top: -25px; margin-left: 50px; font-size: 25px">Random things Frank wants to teach you about</h2>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Page selector underneath the header -->
+    <div style="background-color: rgb(42, 50, 63)" class="columns-box">
+        
+        <a href="\index.html" class="page-selector-links">Home</a>
+        <a href="\blog-main.html" class="page-selector-links">Blog</a>
+        <a href="\how-to.html" class="page-selector-links">How-Tos</a>
+        <a href="\random-pdfs.html" class="page-selector-links">Documents</a>
+        <a href="\curriculum-vitae.html" class="page-selector-links">CV</a>
+        <a href="\about.html" class="page-selector-links">About</a>
+
+    </div>
+
+    <main>
+        <div class="columns-box">
+
+            <div class="back-button">
+                <a href="\how-to.html"><p style="color: rgb(180, 194, 218); text-align: center">Go Back</p></a>
+            </div>
+
+            <div class="blog-text">
+                <h1>Partial Differential Equations - Separation of Variables</h1>
+
+                <h2>Contents</h2>
+                <ul>
+                    <li><a href="#overview">Overview</a></li>
+                    <li><a href="#homogeneous-bc">Homogeneous PDE, homogeneous boundary conditions</a></li>
+                    <li><a href="#inhomogeneous-bc">Homogeneous PDE, inhomogeneous boundary conditions</a></li>
+                    <li><a href="#inhomogeneous-pde">Inhomogeneous PDE, inhomogeneous boundary conditions</a></li>
+                    <li><a href="#summary">Summary</a></li>
+                </ul>
+
+                <h2 id="overview">Overview</h2>
+                <p>Separation of variables is a technique for solving linear, homogeneous PDEs; the boundary conditions can be homogeneous or inhomogeneous, just so long as they only depend on the spatial coordinate and not time. The technique is pretty straight-forward: (1) make a guess (an <em>ansatz</em>) that the form of the solution is the product of two functions, (2) plug that guess into the PDE to get a set of ODEs, (3) use the boundary conditions to solve for unknown values in the ODE solutions, and (4) use the initial conditions to find the remaining unknown values. When a PDE is linear and homogeneous, separation of variables is an easy way to find the solution without leaving anything on the table (as can sometimes be done with other methods).</p>
+
+                <h2 id="homogeneous-bc">Homogeneous PDE, homogeneous boundary conditions</h2>
+
+                    <p>The PDE that we will solve will be the famous Heat Equation,
+                        $$\frac{\partial u}{\partial t} = K\frac{\partial^2 u}{\partial x^2}$$
+                    </p>
+
+                    <p>with homogeneous boundary conditions (the value at each boundary is zero) and initial condition:
+                        $$\begin{gathered} u(x=0, t) = 0 \\ u(x = L, t) = 0 \\ u(x, t = 0) = u_0 \end{gathered}$$
+                    </p>
+
+                    <p>The Heat Equation describes heat transfer within a solid, and the solution yields the temperature profile as a function of time and space. It is an important equation in many engineering fields, so knowing how to solve it can potentially be useful. We will follow the guideline introduced in the overview:</p>
+                    <ol>
+                        <li>Make a guess that the form of the solution is the product of two functions</li>
+                        <li>Plug the guess into the PDE to get two ODEs</li>
+                        <li>Use boundary conditions to solve for unknown values in the ODE solutions</li>
+                        <li>Use initial conditions to find the remaining unknown values</li>
+                    </ol>
+
+                    <h3>1. Make a guess that the form of the solution is the product of two functions</h3>
+                    <p>The first step is to assume the solution takes on the form of the product of two functions: one depends on time, the other depends on space,
+                        $$u(x, t) = \chi(x)\tau(t)$$
+                    </p>
+                    <p>I believe there are proofs out there that show why we are able to assume this is true, but for now, we can assume that this guess yields the correct answer.</p>
+
+                    <h3>2. Plug the guess into the PDE to get two ODEs</h3>
+                    <p>The next step is to take our guess and plug it into the PDE:
+                        $$\frac{\partial}{\partial t}\left(\chi\tau\right) = K\frac{\partial^2}{\partial x^2}\left(\chi\tau\right)$$
+                        $$\chi\tau' = K\chi''\tau$$
+                    </p>
+                    <p>This is where separation of variables gets its name: we separate the \(\chi\) and \(\tau\) functions to get them onto their own sides. Once we do this, however, we've set one function that depends on space equal to another function that depends on time. Since this really is not possible for all values of \(x\) and \(t\), we must set them equal to a <em>separation constant</em>: \(-\lambda^2\). This constant can really be anything we want, but making it negative and squared makes the math work out easier. After separating and setting both sides equal to a separation constant, we get:
+                        $$\frac{\chi''}{\chi} = \frac{\tau'}{K\tau} = -\lambda^2$$
+                        $$\chi'' + \chi\lambda^2 = 0 \qquad\qquad \frac{\tau'}{\tau} = -\lambda^2$$
+                    </p>
+                    <p>The \(\chi\) ODE can be solved using the characteristic equation, and the \(\tau\) ODE can be solved using separation of variables for ODEs. The solutions are:
+                        $$\chi(x) = c_1\sin(\lambda x) + c_2\cos(\lambda x) \qquad\qquad \tau(t) = c_3 e^{-K\lambda^2 t}$$
+                    </p>
+                    <p>Since we have \(\chi(x)\) and \(\tau(t)\), our guess becomes:
+                        $$u(x, t) = e^{-K\lambda^2 t}\left[c_1^*\sin(\lambda x) + c_2^*\cos(\lambda x)\right]$$
+                    </p>
+                    <p>where \(c_1^* = c_1c_3\) and \(c_2^* = c_2c_3\), but you can name them anything you want since they're still just constants.</p>
+
+                    <h3>3. Use boundary conditions to solve for unknown values in the ODE solutions</h3>
+                    <p>We have three unknowns (\(c_1^*, c_2^*, and \lambda\)) and three knowns (two boundary conditions, one initial condition), so we're good to go. Using the boundary condition at \(x = 0\) gives us:
+                        $$u(x = 0, t) = e^{-K\lambda^2 t}\left[c_1^*\cancel{\sin(0)} + c_2^*\cos(0)\right] = 0$$
+                        $$\Rightarrow c_2^* = 0$$
+                    </p>
+                    <p>The other boundary condition gives us:
+                        $$u(x = L, t) = c_1^*e^{-K\lambda^2 t}\sin(\lambda L) = 0$$
+                    </p>
+                    <p>In this case, however, if we set \(c_1^* = 0\), we get the trivial zero solution. To get the full solution, we can consider the case when \(\sin(\lambda L) = 0\). This occurs for \(\lambda = \frac{n\pi}{L}\), where \(n\) is a positive integer. Since all positive integer values of \(n\) are valid, we can use the principle of superposition (the linear combination of separate solutions also yields a solution) to find the full solution. Our solution is:
+                        $$u(x, t) = \sum_{n = 1}^\infty c_1^*e^{-K\frac{n^2\pi^2}{L^2} t}\sin\left(\frac{n\pi x}{L}\right)$$
+                    </p>
+
+                    <h3>4. Use initial conditions to find the remaining unknown values</h3>
+                    <p>The only thing left to do is use the initial condition to find the remaining unknown, \(c_1^*\). The initial condition gives us:
+                        $$u(x, t = 0) = \sum_{n = 1}^\infty c_1^*\sin\left(\frac{n\pi x}{L}\right) = u_0$$
+                    </p>
+                    <p>This looks like a Fourier sine series representation of \(f(x) = u_0\). Recall that the Fourier sine coefficients are found using the formula:
+                        $$c_1^* = 2\int_0^L f(x)\sin\left(\frac{n \pi x}{L}\right)dx$$
+                    </p>
+                    <p>Since we have \(f(x) = u_0\), the coefficients evaluate to:
+                        $$\begin{aligned} c_1^* &= 2u_0\int_0^L \sin\left(\frac{n\pi x}{L}\right)dx \\ &= \left.-\frac{2u_0L}{n\pi}\cos\left(\frac{n\pi x}{L}\right)\right|_0^L \\ &= -\frac{2u_0L}{n\pi}\left[(-1)^{n} - 1\right] \end{aligned}$$
+                    </p>
+                    <p>Now that we have the form of the solution along with the values for \(c_1^*\), \(c_2^*\), and \(\lambda\), we have found our solution:
+                        $$\boxed{u(x, t) = \sum_{n = 1}^\infty \left(-\frac{2u_0L}{n\pi}\left[(-1)^{n} - 1\right]\right)e^{-K\frac{n^2\pi^2}{L^2}t}\sin\left(\frac{n\pi x}{L}\right)}$$
+                    </p>
+
+                    <p>Below is a gif of the solution that we obtained. Notice how the portions with the highest curvature (highest second derivative) are the ones that change the fastest.</p>
+                    <img src="\images\heat_equation_homogeneous_BC.gif" alt="Temperature profile obtained by solving the homogeneous heat equation with homogeneous boundary conditions." class="center-image">
+
+                <h2 id="inhomogeneous-bc">Homogeneous PDE, inhomogeneous boundary conditions</h2>
+                    <p>Dealing with inhomogeneous boundary conditions (one or more of the boundary conditions are nonzero) is quite simple: we can make a substitution for \(u(x, t)\) such that there is a steady-state part (doesn't depend on \(t\)) and a transient part (does depend on \(t\)), then based on the principle of superposition, we can add up those subsolutions for the full solution:
+                        $$u(x, t) = u_1(x, t) + u_2(x, t) + \cdots$$
+                    </p>
+
+                    <p>Note, this method only works if the boundary conditions don't depend on time and/or there are inhomogeneous terms in the PDE that don't depend on \(t\). If there is any time dependence in the boundary conditions or the inhomogeneous terms in the PDE, you must use eigenfunction expansion.</p>
+
+                    <p>The steps to solve these types of PDEs are:</p>
+                    <ol>
+                        <li>Make a substitution that includes steady-state and transient parts</li>
+                        <li>Plug the substitution into the original PDE to get one ODE and one homogeneous PDE</li>
+                        <li>Solve the ODE with the inhomogeneous boundary conditions</li>
+                        <li>Solve the homogeneous PDE using the solution to the ODE</li>
+                        <li>Add the solutions to the ODE and homogeneous PDE for the full solution</li>
+                    </ol>
+
+                    <p>Our PDE will be similar to the last one:
+                        $$\frac{\partial u}{\partial t} = K\frac{\partial^2 u}{\partial x^2}$$
+                    </p>
+
+                    <p>with inhomogeneous boundary conditions and initial condition:
+                        $$\begin{gathered} u(x=0, t) = u_L \\ u(x = L, t) = u_R \\ u(x, t = 0) = u_0 \end{gathered}$$
+                    </p>
+
+                    <h3>1. Make a substitution that includes steady-state and transient parts</h3>
+                    <p>The substitution we will make is:
+                        $$u(x, t) = u_{ss}(x) + v(x, t)$$
+                    </p>
+
+                    <p>where \(u_{ss}(x)\) is the steady-state term and \(v(x, t)\) is the transient term. The transient solution must converge to a specific value over time for this solution to work -- the heat equation is one such PDE whose solution converges to a specific value over time, so this method is valid.</p>
+
+                    <h3>2. Plug the substitution into the PDE to get an ODE and a homogeneous PDE</h3>
+                    <p>We will plug \(u(x, t) = u_{ss}(x) + v(x,t)\) into the PDE to get:
+                        $$\begin{gathered} \frac{\partial}{\partial t}\left(u_{ss} + v\right) = K\frac{\partial^2}{\partial x^2}\left(u_{ss} + v\right) \\ \cancel{\frac{\partial u_{ss}}{\partial t}} + \frac{\partial v}{\partial t} = K\frac{\partial^2 u_{ss}}{\partial x^2} + K\frac{\partial^2 v}{\partial x^2} \\ \frac{\partial v}{\partial t} = K\frac{\partial^2 u_{ss}}{\partial x^2} + K\frac{\partial^2 v}{\partial x^2} \end{gathered}$$
+                    </p>
+
+                    <p>Since we have differential equations of two functions, let's split them up so that we can solve them separately. The steady-state ODE is:
+                        $$\frac{d^2 u_{ss}}{dx^2} = 0$$
+                    </p>
+
+                    <p>with boundary conditions:
+                        $$\begin{gathered}u_{ss}(x = 0) = u_L \\ u_{ss}(x = L) = u_R\end{gathered}$$
+                    </p>
+
+                    <p>We took all the inhomogeneous boundary conditions and attached them to the ODE, leaving the PDE with homogeneous boundary conditions. The transient PDE, which is identical to our original one but now with homogeneous boundary conditions, is:
+                        $$\frac{\partial v}{\partial t} = K\frac{\partial^2 v}{\partial x^2}$$
+                    </p>
+
+                    <p>with boundary conditions and initial condition:
+                        $$\begin{gathered} v(x = 0, t) = 0 \\ v(x = L, t) = 0 \\ v(x, t = 0) = u(x, t=0) - u_{ss}(x) = u_0 - u_{ss}(x) \end{gathered}$$
+                    </p>
+
+                    <p>Note that the initial condition for \(v(x, t)\) is the initial condition for \(u(x, t)\) minus the solution to the steady-state ODE. So, we must solve the ODE before we can tackle the PDE.</p>
+
+                    <h3>3. Solve the ODE with the inhomogeneous boundary conditions</h3>
+
+                    <p>This ODE can be solved pretty easily:
+                        $$u_{ss}(x) = c_1 x + c_2$$
+                    </p>
+
+                    <p>After applying the boundary conditions, we get:
+                        $$u_{ss}(x) = \frac{u_R - u_L}{L}x + u_L$$
+                    </p>
+
+                    <h3>4. Solve the homogeneous PDE using the solution to the ODE</h3>
+                    <p>With the ODE solved, we can tackle the PDE. The PDE with its boundary conditions and initial condition are now:
+                        $$\frac{\partial v}{\partial t} = K\frac{\partial^2 v}{\partial x^2}$$
+                    </p>
+
+                    <p>and:
+                        $$\begin{gathered} v(x = 0, t) = 0 \\ v(x = L, t) = 0 \\ v(x, t = 0) = u_0 - \left(\frac{u_R - u_L}{L}x + u_L\right) \end{gathered}$$
+                    </p>
+
+                    <p>The solution to this PDE is extremely similar to the one we did before. Let's skip ahead to the point after we applied both boundary conditions:
+                        $$v(x, t) = \sum_{n = 1}^\infty c_1^*e^{-K\frac{n^2\pi^2}{L^2} t}\sin\left(\frac{n\pi x}{L}\right)$$
+                    </p>
+
+                    <p>The only thing different between this PDE and the PDE we solved earlier is the initial condition. Again, we can find the value of \(c_1^*\) using the formula for Fourier sine terms to get:
+                        $$\begin{aligned} c_1^* &= \int_0^L \left[u_0 - \left(\frac{u_R - u_L}{L}x + u_L\right)\right]\sin\left(\frac{n\pi x}{L}\right)dx \\ &= \frac{L}{n\pi}\left[(-1)^{n+1}(u_0 - u_R) + (u_0 - u_L)\right] \end{aligned}$$
+                    </p>
+
+                    <p>Notice how the formula for \(c_1^*\) is \(\int_0^L\cdots\) and not \(2\int_0^L\cdots\). We are typically able to divide the integrating bounds by half so long as we multiply the integral by 2, however since we are finding the Fourier series for the solution to an ODE with bounds at \(x = 0\) and \(x = L\), our entire bounds are between \(0\) and \(L\). Because of this, we do not need to divide the integrating bounds by half and multiply the integral by 2.</p>
+
+                    <p>So our solution for \(v(x,t)\) is:
+                        $$v(x, t) = \sum_{n = 1}^\infty \left(\frac{L}{n\pi}\left[(-1)^{n+1}(u_0 - u_R) + (u_0 - u_L)\right]\right)e^{-K\frac{n^2\pi^2}{L^2} t}\sin\left(\frac{n\pi x}{L}\right)$$
+                    </p>
+
+                    <h3>5. Add the solutions to the ODE and homogeneous PDE for the full solution</h3>
+                    <p>With the solutions to \(u_{ss}(x)\) and \(v(x, t)\), our full solution is:
+                        $$\boxed{u(x, t) = \frac{u_R - u_L}{L}x + u_L + \sum_{n = 1}^\infty \left(\frac{L}{n\pi}\left[(-1)^{n+1}(u_0 - u_R) + (u_0 - u_L)\right]\right)e^{-K\frac{n^2\pi^2}{L^2} t}\sin\left(\frac{n\pi x}{L}\right)}$$
+                    </p>
+
+                    <p>Below is a gif of the solution that we obtained. Notice how the temperature profile eventually forms a straight line between the two boundary conditions -- think about it as a "normal" temperature profile (like the one in the previous section) except we stretch and morph it vertically so that the ends meet the boundary conditions.</p>
+                    <img src="\images\heat_equation_inhomogeneous_BC.gif" alt="Temperature profile obtained by solving the homogeneous heat equation with inhomogeneous boundary conditions." class="center-image">
+
+                <h2 id="inhomogeneous-pde">Inhomogeneous PDE, inhomogeneous boundary conditions</h2>
+                <p>The last type of PDE that we will be solving with separation of variables is an inhomogeneous PDE with inhomogeneous boundary conditions. An inhomogeneous PDE means that there are extra terms in the PDE itself; these can be tackled by the same method as before where we make a substitution with a steady-state part and a transient part, so long as the extra terms are only functions of \(x\). The PDE we will be solving is:
+                    $$\frac{\partial u}{\partial t} = K\frac{\partial^2 u}{\partial x^2} + 1$$
+                </p>
+
+                <p>with boundary conditions and initial conditions:
+                    $$\begin{gathered} \left.\frac{\partial u}{\partial x}\right|_{x = 0} = u_L \\ u(x = L, t) = u_R \\ u(x, t = 0) = \cos(10x) \end{gathered}$$
+                </p>
+
+                <p>The steps to solve this PDE are the same as the previous PDE:</p>
+                <ol>
+                    <li>Make a substitution that includes steady-state and transient parts</li>
+                    <li>Plug the substitution into the original PDE to get one ODE and one homogeneous PDE</li>
+                    <li>Solve the ODE with the inhomogeneous boundary conditions</li>
+                    <li>Solve the homogeneous PDE using the solution to the ODE</li>
+                    <li>Add the solutions to the ODE and homogeneous PDE for the full solution</li>
+                </ol>
+
+                <h3>1. Make a substitution that includes steady-state and transient parts</h3>
+                <p>As expected, we make the substitution:
+                    $$u(x, t) = u_{ss}(x) + v(x, t)$$
+                </p>
+
+                <h3>2. Plug the substitution into the original PDE to get one ODE and one homogeneous PDE</h3>
+                <p>Plugging in the substitution yields:
+                    $$\frac{\partial v}{\partial t} = K\frac{\partial^2 u_{ss}}{\partial x^2} + K\frac{\partial^2 v}{\partial x^2} + 1$$
+                </p>
+
+                <h3>3. Solve the ODE with the inhomogeneous boundary conditions</h3>
+                <p>The ODE that we need to solve is:
+                    $$\frac{d^2u_{ss}}{dx^2} = -\frac{1}{K}$$
+                </p>
+                <p>with boundary conditions
+                    $$\begin{gathered} \left.\frac{du_{ss}}{dx}\right|_{x=0} = u_L \\ u_{ss}(x = L) = u_R \end{gathered}$$
+                </p>
+
+                <p>The solution to the ODE is:
+                    $$u_{ss}(x) = -\frac{x^2}{2K} + c_1x + c_2$$
+                </p>
+
+                <p>After applying the boundary conditions we get:
+                    $$u_{ss} = \frac{1}{2K}\left(L^2 - x^2\right) + u_L(x - L) + u_R$$
+                </p>
+
+                <h3>4. Solve the homogeneous PDE using the solution to the ODE</h3>
+                <p>We are now able to tackle the ODE:
+                    $$\frac{\partial v}{\partial t} = K\frac{\partial^2 v}{\partial x^2}$$
+                </p>
+
+                <p>with boundary conditions and initial condition:
+                    $$\begin{gathered} \left.\frac{\partial v}{\partial x}\right|_{x=0} = 0 \\ v(x = L, t) = 0 \\ v(x, t = 0) = \cos(10x) - \left[\frac{1}{2K}\left(L^2 - x^2\right) + u_L(x - L) + u_R\right] \end{gathered}$$
+                </p>
+
+                <p>Again, we already know how to get to the point after we apply the homogeneous boundary conditions, which gives us:
+                    $$v(x, t) = \sum_{n = 1, 3, 5, \ldots}^\infty e^{-K\frac{n^2\pi^2}{4L^2}t}c_1^*\cos\left(\frac{n\pi x}{2L}\right)$$
+                </p>
+
+                <p>And \(c_1^*\) can be found using the formula for Fourier sine coefficients (it's a super long integral so I'll just keep it in integral form and solve it numerically):
+                    $$c_1^* = \int_0^L \left(\cos(10x) - \left[\frac{1}{2K}\left(L^2 - x^2\right) + u_L(x - L) + u_R\right]\right)\cos\left(\frac{n\pi x}{2L}\right)dx$$
+                </p>
+
+                <h3>5. Add the solutions to the ODE and homogeneous PDE for the full solution</h3>
+                <p>Adding the solutions to \(u_{ss}(x)\) and \(v(x, t)\) gives us:
+                    $$\boxed{u(x, t) = \frac{1}{2K}\left(L^2 - x^2\right) + u_L(x - L) + u_R + \sum_{n = 1, 3, 5, \ldots}^\infty e^{-K\frac{n^2\pi^2}{4L^2}t}c_1^*\cos\left(\frac{n\pi x}{2L}\right)}$$
+                </p>
+
+                <p>where \(c_1^*\) is the gargantuan integral above. Below is a gif of the solution that we obtained. Notice how the derivative at the left boundary is constant, and the temperature profile seems to be "moving upwards" due to the extra term in the PDE, often called a "forcing term" or "generation term." Though the upward movement is also partly due to the left derivative, the generation term is essentially "adding heat" to the material we're studying, making the temperature increase.</p>
+
+                <img src="\images\heat_equation_inhomogeneous_BC_inhomogeneous_PDE.gif" alt="Temperature profile obtained by solving the inhomogeneous heat equation with inhomogeneous boundary conditions." class="center-image">
+
+                <h2 id="summary">Summary</h2>
+                <p>Separation of variables is a very useful method for solving linear PDEs whose boundary conditions and inhomogeneous terms don't depend on time. Though it is one of the first methods you learn to solve PDEs, its applications are wide ranging, and can solve PDEs such as the wave equation, the heat equation, and even forms of the Schrödinger equation (which is actually a form of the wave equation). I find the method of separation of variables to be fun, you just need to be extra careful when evaluating integrals -- there's a lot of places for small arithmetical errors to crop up and ruin your whole solution.</p>
+                
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer at the bottom of every page of the website-->
+    <footer>
+        <div class="columns-box">
+
+            <div class="footer-columns">
+                <p>Created by <strong style="color: rgb(180, 194, 218)">Frank J. Vilimek (FJV)</strong></p>
+            </div>
+
+            <div class="footer-columns">
+                <p><u>Contact and Socials:</u></p>
+                <p><img src="\images\gmail-logo.png" alt="Gmail Logo" height="15px" width="22px"> frankvilimek@gmail.com</p>
+                <p><a href="https://www.youtube.com/@FJV_YT" target="_blank"><img src="\images\youtube-logo.png" alt="YouTube Logo" height="15px" width="22px"> YouTube</a></p>
+                <p><a href="https://www.linkedin.com/in/frankjv/" target="_blank"><img src="\images\linkedin-logo.png" alt="LinkedIn Logo" height="20px" width="20px"> LinkedIn</a></p>
+                <p><a href="https://www.instagram.com/tasty_kun/" target="_blank"><img src="\images\instagram-logo.png" alt="Instagram Logo" height="20px" width="20px"> Instagram</a></p>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>

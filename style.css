@@ -1,0 +1,156 @@
+body {
+    background-color: rgb(124, 139, 161);
+    margin: 0;
+}
+
+header {
+    background: linear-gradient(to left, rgb(55, 67, 85), rgb(87, 103, 128));
+    color: rgb(29, 37, 48);
+}
+
+main {
+    background-color: white;
+    width: 85%;
+    margin: auto;
+    padding-left: 50px;
+    padding-right: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+footer {
+    background: linear-gradient(to left, rgb(55, 67, 85), rgb(87, 103, 128));
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-family: Montserrat;
+    font-weight: bold;
+    font-size: 50px;
+    color: rgb(29, 37, 48);
+}
+
+h2 {
+    font-family: Lora;
+    font-style: italic;
+    font-size: 35px;
+    color: rgb(44, 55, 70);
+}
+
+h3 {
+    font-family: Montserrat;
+    font-style: italic;
+    font-size: 25px;
+    color: rgb(89, 106, 129);
+}
+
+p {
+    font-family: Hind Madurai;
+    font-size: 20px;
+}
+
+.columns-box {
+    display: flex;
+    margin: auto;
+    padding: 10px;
+}
+
+/* prior to hover */
+.page-selector-links {
+    font-family: Montserrat;
+    font-style: bold;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+
+    background-color: rgb(31, 37, 46);
+    color: white;
+    padding: 10px 50px;
+    text-decoration: none;
+    display: inline-block
+}
+
+/* after hover */
+.page-selector-links:hover {
+    font-family: Montserrat;
+    font-style: bold;
+    font-size: 20px;
+    text-align: center;
+    margin: auto;
+
+    background-color: white;
+    color: rgb(31, 37, 46);
+    padding: 10px 50px;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.center {
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.footer-columns {
+    margin: auto;
+    color: white;
+}
+
+a {
+    color: rgb(180, 194, 218);
+    text-decoration: none;
+}
+
+.blog-selection {
+    background-color: rgb(87, 103, 128);
+    padding: 10px;
+    color: white;
+    margin: auto;
+    width: 1000px;
+}
+
+.back-button {
+    background-color: rgb(87, 103, 128);
+    padding: 10px;
+    color: white;
+    margin-bottom: auto;
+    flex: 0 0 200px;
+}
+
+ul {
+    font-family: Hind Madurai;
+    font-size: 20px;
+}
+
+ol {
+    font-family: Hind Madurai;
+    font-size: 20px;
+}
+
+.blog-text {
+    margin-left: 50px;
+    margin-right: 200px;
+}
+
+.figure-label {
+    font-style: italic;
+    margin-top: -5px;
+}
+
+.window-fit {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+}
+
+.inline-toc {
+    color: rgb(89, 106, 129);
+}
+
+.center-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+}
