@@ -3,8 +3,8 @@
 
 <head>
     <title>Frank's Site - How-To</title>
-    <link href="\style.css" rel="stylesheet">
-    <link href="\images/fjv-favicon-2.png" rel="icon" type="image/x-icon">
+    <link href="./style.css" rel="stylesheet">
+    <link href="./images/fjv-favicon-2.png" rel="icon" type="image/x-icon">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind Madurai">
@@ -22,7 +22,7 @@
         <div class="columns-box">
 
             <div>
-                <a href="\index.html"><img src="\images\fjv-favicon-2.png" alt="FJV Favicon Version 1, Pixelated Metal Plate" width="150px" height="150px"></a>
+                <a href="./index.html"><img src="./images\fjv-favicon-2.png" alt="FJV Favicon Version 1, Pixelated Metal Plate" width="150px" height="150px"></a>
             </div>
 
             <div>
@@ -36,12 +36,12 @@
     <!-- Page selector underneath the header -->
     <div style="background-color: rgb(42, 50, 63)" class="columns-box">
         
-        <a href="\index.html" class="page-selector-links">Home</a>
-        <a href="\blog-main.html" class="page-selector-links">Blog</a>
-        <a href="\how-to.html" class="page-selector-links">How-Tos</a>
-        <a href="\random-pdfs.html" class="page-selector-links">Documents</a>
-        <a href="\curriculum-vitae.html" class="page-selector-links">CV</a>
-        <a href="\about.html" class="page-selector-links">About</a>
+        <a href="./" class="page-selector-links">Home</a>
+        <a href="./blog-main.html" class="page-selector-links">Blog</a>
+        <a href="./how-to.html" class="page-selector-links">How-Tos</a>
+        <a href="./random-pdfs.html" class="page-selector-links">Documents</a>
+        <a href="./curriculum-vitae.html" class="page-selector-links">CV</a>
+        <a href="./about.html" class="page-selector-links">About</a>
 
     </div>
 
@@ -49,7 +49,7 @@
         <div class="columns-box">
 
             <div class="back-button">
-                <a href="\how-to.html"><p style="color: rgb(180, 194, 218); text-align: center">Go Back</p></a>
+                <a href="./how-to.html"><p style="color: rgb(180, 194, 218); text-align: center">Go Back</p></a>
             </div>
 
             <div class="blog-text">
@@ -135,7 +135,7 @@
                     </p>
 
                     <p>Below is a gif of the solution that we obtained. Notice how the portions with the highest curvature (highest second derivative) are the ones that change the fastest.</p>
-                    <img src="\images\heat_equation_homogeneous_BC.gif" alt="Temperature profile obtained by solving the homogeneous heat equation with homogeneous boundary conditions." class="center-image">
+                    <img src="./images\heat_equation_homogeneous_BC.gif" alt="Temperature profile obtained by solving the homogeneous heat equation with homogeneous boundary conditions." class="center-image">
 
                 <h2 id="inhomogeneous-bc">Homogeneous PDE, inhomogeneous boundary conditions</h2>
                     <p>Dealing with inhomogeneous boundary conditions (one or more of the boundary conditions are nonzero) is quite simple: we can make a substitution for \(u(x, t)\) such that there is a steady-state part (doesn't depend on \(t\)) and a transient part (does depend on \(t\)), then based on the principle of superposition, we can add up those subsolutions for the full solution:
@@ -230,7 +230,7 @@
                     </p>
 
                     <p>Below is a gif of the solution that we obtained. Notice how the temperature profile eventually forms a straight line between the two boundary conditions -- think about it as a "normal" temperature profile (like the one in the previous section) except we stretch and morph it vertically so that the ends meet the boundary conditions.</p>
-                    <img src="\images\heat_equation_inhomogeneous_BC.gif" alt="Temperature profile obtained by solving the homogeneous heat equation with inhomogeneous boundary conditions." class="center-image">
+                    <img src="./images\heat_equation_inhomogeneous_BC.gif" alt="Temperature profile obtained by solving the homogeneous heat equation with inhomogeneous boundary conditions." class="center-image">
 
                 <h2 id="inhomogeneous-pde">Inhomogeneous PDE, inhomogeneous boundary conditions</h2>
                 <p>The last type of PDE that we will be solving with separation of variables is an inhomogeneous PDE with inhomogeneous boundary conditions. An inhomogeneous PDE means that there are extra terms in the PDE itself; these can be tackled by the same method as before where we make a substitution with a steady-state part and a transient part, so long as the extra terms are only functions of \(x\). The PDE we will be solving is:
@@ -300,7 +300,7 @@
 
                 <p>where \(c_1^*\) is the gargantuan integral above. Below is a gif of the solution that we obtained. Notice how the derivative at the left boundary is constant, and the temperature profile seems to be "moving upwards" due to the extra term in the PDE, often called a "forcing term" or "generation term." Though the upward movement is also partly due to the left derivative, the generation term is essentially "adding heat" to the material we're studying, making the temperature increase.</p>
 
-                <img src="\images\heat_equation_inhomogeneous_BC_inhomogeneous_PDE.gif" alt="Temperature profile obtained by solving the inhomogeneous heat equation with inhomogeneous boundary conditions." class="center-image">
+                <img src="./images\heat_equation_inhomogeneous_BC_inhomogeneous_PDE.gif" alt="Temperature profile obtained by solving the inhomogeneous heat equation with inhomogeneous boundary conditions." class="center-image">
 
                 <h2 id="summary">Summary</h2>
                 <p>Separation of variables is a very useful method for solving linear PDEs whose boundary conditions and inhomogeneous terms don't depend on time. Though it is one of the first methods you learn to solve PDEs, its applications are wide ranging, and can solve PDEs such as the wave equation, the heat equation, and even forms of the Schrödinger equation (which is actually a form of the wave equation). I find the method of separation of variables to be fun, you just need to be extra careful when evaluating integrals -- there's a lot of places for small arithmetical errors to crop up and ruin your whole solution.</p>
@@ -320,14 +320,15 @@
 
             <div class="footer-columns">
                 <p><u>Contact and Socials:</u></p>
-                <p><img src="\images\gmail-logo.png" alt="Gmail Logo" height="15px" width="22px"> frankvilimek@gmail.com</p>
-                <p><a href="https://www.youtube.com/@FJV_YT" target="_blank"><img src="\images\youtube-logo.png" alt="YouTube Logo" height="15px" width="22px"> YouTube</a></p>
-                <p><a href="https://www.linkedin.com/in/frankjv/" target="_blank"><img src="\images\linkedin-logo.png" alt="LinkedIn Logo" height="20px" width="20px"> LinkedIn</a></p>
-                <p><a href="https://www.instagram.com/tasty_kun/" target="_blank"><img src="\images\instagram-logo.png" alt="Instagram Logo" height="20px" width="20px"> Instagram</a></p>
+                <p><img src="./images\gmail-logo.png" alt="Gmail Logo" height="15px" width="22px"> frankvilimek@gmail.com</p>
+                <p><a href="https://www.youtube.com/@FJV_YT" target="_blank"><img src="./images\youtube-logo.png" alt="YouTube Logo" height="15px" width="22px"> YouTube</a></p>
+                <p><a href="https://www.linkedin.com/in/frankjv/" target="_blank"><img src="./images\linkedin-logo.png" alt="LinkedIn Logo" height="20px" width="20px"> LinkedIn</a></p>
+                <p><a href="https://www.instagram.com/tasty_kun/" target="_blank"><img src="./images\instagram-logo.png" alt="Instagram Logo" height="20px" width="20px"> Instagram</a></p>
             </div>
 
         </div>
     </footer>
 
 </body>
+
 </html>
