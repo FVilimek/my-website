@@ -22,7 +22,7 @@
         <div class="columns-box">
 
             <div>
-                <a href="../index.html"><img src="../images\fjv-favicon-2.png" alt="FJV Favicon Version 1, Pixelated Metal Plate" width="150px" height="150px"></a>
+                <a href="../index.html"><img src="../images/fjv-favicon-2.png" alt="FJV Favicon Version 1, Pixelated Metal Plate" width="150px" height="150px"></a>
             </div>
 
             <div>
@@ -57,15 +57,15 @@
 
                 <h2>Contents</h2>
                 <ul>
-                    <li><a href="#overview">Overview</a></li>
-                    <li><a href="#homogeneous-bc">Homogeneous PDE, homogeneous boundary conditions</a></li>
-                    <li><a href="#inhomogeneous-bc">Homogeneous PDE, inhomogeneous boundary conditions</a></li>
-                    <li><a href="#inhomogeneous-pde">Inhomogeneous PDE, inhomogeneous boundary conditions</a></li>
-                    <li><a href="#summary">Summary</a></li>
+                    <li><a class="page-navigator-button" href="#overview">Overview</a></li>
+                    <li><a class="page-navigator-button" href="#homogeneous-bc">Homogeneous PDE, homogeneous boundary conditions</a></li>
+                    <li><a class="page-navigator-button" href="#inhomogeneous-bc">Homogeneous PDE, inhomogeneous boundary conditions</a></li>
+                    <li><a class="page-navigator-button" href="#inhomogeneous-pde">Inhomogeneous PDE, inhomogeneous boundary conditions</a></li>
+                    <li><a class="page-navigator-button" href="#summary">Summary</a></li>
                 </ul>
 
                 <h2 id="overview">Overview</h2>
-                <p>Separation of variables is a technique for solving linear, homogeneous PDEs; the boundary conditions can be homogeneous or inhomogeneous, just so long as they only depend on the spatial coordinate and not time. The technique is pretty straight-forward: (1) make a guess (an <em>ansatz</em>) that the form of the solution is the product of two functions, (2) plug that guess into the PDE to get a set of ODEs, (3) use the boundary conditions to solve for unknown values in the ODE solutions, and (4) use the initial conditions to find the remaining unknown values. When a PDE is linear and homogeneous, separation of variables is an easy way to find the solution without leaving anything on the table (as can sometimes be done with other methods).</p>
+                <p>Separation of variables is a technique mainly for solving linear, homogeneous PDEs; the boundary conditions can be homogeneous or inhomogeneous, just so long as they only depend on the spatial coordinate and not time. The technique is pretty straight-forward: (1) make a guess (an <em>ansatz</em>) that the form of the solution is the product of two functions, (2) plug that guess into the PDE to get a set of ODEs, (3) use the boundary conditions to solve for unknown values in the ODE solutions, and (4) use the initial conditions to find the remaining unknown values. When a PDE is linear and homogeneous, separation of variables is an easy way to find the solution without leaving anything on the table (as can sometimes be done with other methods).</p>
 
                 <h2 id="homogeneous-bc">Homogeneous PDE, homogeneous boundary conditions</h2>
 
@@ -125,17 +125,17 @@
                         $$u(x, t = 0) = \sum_{n = 1}^\infty c_1^*\sin\left(\frac{n\pi x}{L}\right) = u_0$$
                     </p>
                     <p>This looks like a Fourier sine series representation of \(f(x) = u_0\). Recall that the Fourier sine coefficients are found using the formula:
-                        $$c_1^* = 2\int_0^L f(x)\sin\left(\frac{n \pi x}{L}\right)dx$$
+                        $$c_1^* = \frac{2}{L}\int_0^L f(x)\sin\left(\frac{n \pi x}{L}\right)dx$$
                     </p>
                     <p>Since we have \(f(x) = u_0\), the coefficients evaluate to:
-                        $$\begin{aligned} c_1^* &= 2u_0\int_0^L \sin\left(\frac{n\pi x}{L}\right)dx \\ &= \left.-\frac{2u_0L}{n\pi}\cos\left(\frac{n\pi x}{L}\right)\right|_0^L \\ &= -\frac{2u_0L}{n\pi}\left[(-1)^{n} - 1\right] \end{aligned}$$
+                        $$\begin{aligned} c_1^* &= \frac{2u_0}{L}\int_0^L \sin\left(\frac{n\pi x}{L}\right)dx \\ &= \left.-\frac{2u_0}{n\pi}\cos\left(\frac{n\pi x}{L}\right)\right|_0^L \\ &= -\frac{2u_0}{n\pi}\left[(-1)^{n} - 1\right] \end{aligned}$$
                     </p>
                     <p>Now that we have the form of the solution along with the values for \(c_1^*\), \(c_2^*\), and \(\lambda\), we have found our solution:
-                        $$\boxed{u(x, t) = \sum_{n = 1}^\infty \left(-\frac{2u_0L}{n\pi}\left[(-1)^{n} - 1\right]\right)e^{-K\frac{n^2\pi^2}{L^2}t}\sin\left(\frac{n\pi x}{L}\right)}$$
+                        $$\boxed{u(x, t) = \sum_{n = 1}^\infty \left(-\frac{2u_0}{n\pi}\left[(-1)^{n} - 1\right]\right)e^{-K\frac{n^2\pi^2}{L^2}t}\sin\left(\frac{n\pi x}{L}\right)}$$
                     </p>
 
                     <p>Below is a gif of the solution that we obtained. Notice how the portions with the highest curvature (highest second derivative) are the ones that change the fastest.</p>
-                    <img src="../images\heat_equation_homogeneous_BC.gif" alt="Temperature profile obtained by solving the homogeneous heat equation with homogeneous boundary conditions." class="center-image">
+                    <img src="../images/heat_equation_homogeneous_BC.gif" alt="Temperature profile obtained by solving the homogeneous heat equation with homogeneous boundary conditions." class="center-image">
 
                 <h2 id="inhomogeneous-bc">Homogeneous PDE, inhomogeneous boundary conditions</h2>
                     <p>Dealing with inhomogeneous boundary conditions (one or more of the boundary conditions are nonzero) is quite simple: we can make a substitution for \(u(x, t)\) such that there is a steady-state part (doesn't depend on \(t\)) and a transient part (does depend on \(t\)), then based on the principle of superposition, we can add up those subsolutions for the full solution:
@@ -215,22 +215,20 @@
                     </p>
 
                     <p>The only thing different between this PDE and the PDE we solved earlier is the initial condition. Again, we can find the value of \(c_1^*\) using the formula for Fourier sine terms to get:
-                        $$\begin{aligned} c_1^* &= \int_0^L \left[u_0 - \left(\frac{u_R - u_L}{L}x + u_L\right)\right]\sin\left(\frac{n\pi x}{L}\right)dx \\ &= \frac{L}{n\pi}\left[(-1)^{n+1}(u_0 - u_R) + (u_0 - u_L)\right] \end{aligned}$$
+                        $$\begin{aligned} c_1^* &= \frac{2}{L}\int_0^L \left[u_0 - \left(\frac{u_R - u_L}{L}x + u_L\right)\right]\sin\left(\frac{n\pi x}{L}\right)dx \\ &= \frac{2}{n\pi}\left[(-1)^{n+1}(u_0 - u_R) + (u_0 - u_L)\right] \end{aligned}$$
                     </p>
 
-                    <p>Notice how the formula for \(c_1^*\) is \(\int_0^L\cdots\) and not \(2\int_0^L\cdots\). We are typically able to divide the integrating bounds by half so long as we multiply the integral by 2, however since we are finding the Fourier series for the solution to an ODE with bounds at \(x = 0\) and \(x = L\), our entire bounds are between \(0\) and \(L\). Because of this, we do not need to divide the integrating bounds by half and multiply the integral by 2.</p>
-
                     <p>So our solution for \(v(x,t)\) is:
-                        $$v(x, t) = \sum_{n = 1}^\infty \left(\frac{L}{n\pi}\left[(-1)^{n+1}(u_0 - u_R) + (u_0 - u_L)\right]\right)e^{-K\frac{n^2\pi^2}{L^2} t}\sin\left(\frac{n\pi x}{L}\right)$$
+                        $$v(x, t) = \sum_{n = 1}^\infty \left(\frac{2}{n\pi}\left[(-1)^{n+1}(u_0 - u_R) + (u_0 - u_L)\right]\right)e^{-K\frac{n^2\pi^2}{L^2} t}\sin\left(\frac{n\pi x}{L}\right)$$
                     </p>
 
                     <h3>5. Add the solutions to the ODE and homogeneous PDE for the full solution</h3>
                     <p>With the solutions to \(u_{ss}(x)\) and \(v(x, t)\), our full solution is:
-                        $$\boxed{u(x, t) = \frac{u_R - u_L}{L}x + u_L + \sum_{n = 1}^\infty \left(\frac{L}{n\pi}\left[(-1)^{n+1}(u_0 - u_R) + (u_0 - u_L)\right]\right)e^{-K\frac{n^2\pi^2}{L^2} t}\sin\left(\frac{n\pi x}{L}\right)}$$
+                        $$\boxed{u(x, t) = \frac{u_R - u_L}{L}x + u_L + \sum_{n = 1}^\infty \left(\frac{2}{n\pi}\left[(-1)^{n+1}(u_0 - u_R) + (u_0 - u_L)\right]\right)e^{-K\frac{n^2\pi^2}{L^2} t}\sin\left(\frac{n\pi x}{L}\right)}$$
                     </p>
 
                     <p>Below is a gif of the solution that we obtained. Notice how the temperature profile eventually forms a straight line between the two boundary conditions -- think about it as a "normal" temperature profile (like the one in the previous section) except we stretch and morph it vertically so that the ends meet the boundary conditions.</p>
-                    <img src="../images\heat_equation_inhomogeneous_BC.gif" alt="Temperature profile obtained by solving the homogeneous heat equation with inhomogeneous boundary conditions." class="center-image">
+                    <img src="../images/heat_equation_inhomogeneous_BC.gif" alt="Temperature profile obtained by solving the homogeneous heat equation with inhomogeneous boundary conditions." class="center-image">
 
                 <h2 id="inhomogeneous-pde">Inhomogeneous PDE, inhomogeneous boundary conditions</h2>
                 <p>The last type of PDE that we will be solving with separation of variables is an inhomogeneous PDE with inhomogeneous boundary conditions. An inhomogeneous PDE means that there are extra terms in the PDE itself; these can be tackled by the same method as before where we make a substitution with a steady-state part and a transient part, so long as the extra terms are only functions of \(x\). The PDE we will be solving is:
@@ -290,7 +288,7 @@
                 </p>
 
                 <p>And \(c_1^*\) can be found using the formula for Fourier sine coefficients (it's a super long integral so I'll just keep it in integral form and solve it numerically):
-                    $$c_1^* = \int_0^L \left(\cos(10x) - \left[\frac{1}{2K}\left(L^2 - x^2\right) + u_L(x - L) + u_R\right]\right)\cos\left(\frac{n\pi x}{2L}\right)dx$$
+                    $$c_1^* = \frac{2}{L}\int_0^L \left(\cos(10x) - \left[\frac{1}{2K}\left(L^2 - x^2\right) + u_L(x - L) + u_R\right]\right)\cos\left(\frac{n\pi x}{2L}\right)dx$$
                 </p>
 
                 <h3>5. Add the solutions to the ODE and homogeneous PDE for the full solution</h3>
@@ -300,7 +298,7 @@
 
                 <p>where \(c_1^*\) is the gargantuan integral above. Below is a gif of the solution that we obtained. Notice how the derivative at the left boundary is constant, and the temperature profile seems to be "moving upwards" due to the extra term in the PDE, often called a "forcing term" or "generation term." Though the upward movement is also partly due to the left derivative, the generation term is essentially "adding heat" to the material we're studying, making the temperature increase.</p>
 
-                <img src="../images\heat_equation_inhomogeneous_BC_inhomogeneous_PDE.gif" alt="Temperature profile obtained by solving the inhomogeneous heat equation with inhomogeneous boundary conditions." class="center-image">
+                <img src="../images/heat_equation_inhomogeneous_BC_inhomogeneous_PDE.gif" alt="Temperature profile obtained by solving the inhomogeneous heat equation with inhomogeneous boundary conditions." class="center-image">
 
                 <h2 id="summary">Summary</h2>
                 <p>Separation of variables is a very useful method for solving linear PDEs whose boundary conditions and inhomogeneous terms don't depend on time. Though it is one of the first methods you learn to solve PDEs, its applications are wide ranging, and can solve PDEs such as the wave equation, the heat equation, and even forms of the Schrödinger equation (which is actually a form of the wave equation). I find the method of separation of variables to be fun, you just need to be extra careful when evaluating integrals -- there's a lot of places for small arithmetical errors to crop up and ruin your whole solution.</p>
@@ -320,16 +318,14 @@
 
             <div class="footer-columns">
                 <p><u>Contact and Socials:</u></p>
-                <p><img src="../images\gmail-logo.png" alt="Gmail Logo" height="15px" width="22px"> frankvilimek@gmail.com</p>
-                <p><a href="https://www.youtube.com/@FJV_YT" target="_blank"><img src="../images\youtube-logo.png" alt="YouTube Logo" height="15px" width="22px"> YouTube</a></p>
-                <p><a href="https://www.linkedin.com/in/frankjv/" target="_blank"><img src="../images\linkedin-logo.png" alt="LinkedIn Logo" height="20px" width="20px"> LinkedIn</a></p>
-                <p><a href="https://www.instagram.com/tasty_kun/" target="_blank"><img src="../images\instagram-logo.png" alt="Instagram Logo" height="20px" width="20px"> Instagram</a></p>
+                <p><img src="../images/gmail-logo.png" alt="Gmail Logo" height="15px" width="22px"> frankvilimek@gmail.com</p>
+                <p><a href="https://www.youtube.com/@FJV_YT" target="_blank"><img src="../images/youtube-logo.png" alt="YouTube Logo" height="15px" width="22px"> YouTube</a></p>
+                <p><a href="https://www.linkedin.com/in/frankjv/" target="_blank"><img src="../images/linkedin-logo.png" alt="LinkedIn Logo" height="20px" width="20px"> LinkedIn</a></p>
+                <p><a href="https://www.instagram.com/tasty_kun/" target="_blank"><img src="../images/instagram-logo.png" alt="Instagram Logo" height="20px" width="20px"> Instagram</a></p>
             </div>
 
         </div>
     </footer>
 
 </body>
-
 </html>
-
