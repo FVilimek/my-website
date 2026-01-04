@@ -50,6 +50,16 @@ p {
     font-size: 20px;
 }
 
+table, th, td {
+    font-family: Hind Madurai;
+    font-size: 20px;
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .columns-box {
     display: flex;
     margin: auto;
@@ -68,7 +78,7 @@ p {
     color: white;
     padding: 10px 50px;
     text-decoration: none;
-    display: inline-block
+    display: inline-block;
 }
 
 /* after hover */
@@ -99,7 +109,7 @@ p {
 
 a {
     color: rgb(180, 194, 218);
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 .blog-selection {
@@ -107,7 +117,7 @@ a {
     padding: 10px;
     color: white;
     margin: auto;
-    width: 1000px;
+    width: 70%;
 }
 
 .back-button {
@@ -115,7 +125,9 @@ a {
     padding: 10px;
     color: white;
     margin-bottom: auto;
-    flex: 0 0 200px;
+    margin-left: auto;
+    margin-right: auto;
+    flex: 0 0 8%;
 }
 
 ul {
@@ -152,5 +164,18 @@ ol {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 40%;
+    height: auto;
+}
+
+.center-image-about {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 20%;
+    height: auto;
+}
+
+.page-navigator-button {
+    color: rgb(89, 106, 129);
 }
