@@ -125,17 +125,33 @@
 
             <h2>Projects</h2>
                 <ul>
-                    <li><strong>Small-Scale Ammonia Plant Design in Aspen Plus</strong></li>
+                    <li><strong>Automated Fleet Status Emails Through SQL and Python (Professional, Intel)</strong></li>
+                        <ul>
+                            <li>Developed scripts through Intel's proprietary SQL script builder to automate hourly emails to monitor tool fleet statuses. Statuses included current tool status ("Up", "Down", "In Repair", "Running", etc.), tool alarm type and count, last event (lot introductions, lot completions, status changes, etc.), and current hold lots.</li>
+                            <li>Fleet status and hold lot tracking were used to monitor module health and operator performance. This tracking was used as a driving force to push for operator training as it provided concrete data on the correlation between tool health and quality events (e.g. high alarm count led to lots being placed on hold), as more trained operators are able to fix tool issues before they cause major quality issues.</li>
+                            <li>Integrated Python programs to run alongside automated SQL script, allowing for more custom data pulls from various sources not accessible through SQL. These data pulls allowed for regular monitoring of key quality metrics, such as the quantity of units rejected by the tool itself (via built-in rejection criteria, e.g. die size tolerance) versus a tool operator and reasons for unit rejection (die size out of tolerance, substrate defects, force higher/lower than tolerance, etc.).</li>
+                            <li>Automated scripts were expanded upon, later aiding in targeting root causes behind process line defects across multiple areas by providing data on the dynamic response of defect detection after reduction efforts were made.</li>
+                        </ul>
+
+                    <li><strong>Power BI Dashboards for Hold Lots and Quality Events (Professional, Intel)</strong></li>
+                        <ul>
+                            <li>Combined automated SQL scripts made through Intel's proprietary script builder with Microsoft Power BI to develop dashboards for modules to track key metrics for quality events.</li>
+                            <li>Hold lot dashboard was developed to track the number of lots placed on hold, the tools the lots ran on, the type of hold, the tool operator, and comments made by tool operators. The dashboard aided in tracking tool health (e.g. one tool producing more hold lots than others), issues with running certain products (e.g. one product producing more hold lots than other products), and operator/engineering performance (e.g. some operators/engineers placing more lots on hold compared to others). The dashboard was used in various initiatives, including operator training, tool upgrades, alarm reduction, and hold lot reduction.</li>
+                            <li>Quality event dashboard was developed to track the quality events for the module and to assign actions/deliverables to engineers/tool owners. The dashboard aided in streamlining the process of documenting quality events and completing tasks that either fixed events and/or prevented future events. The quality event dashboard was made to include the entire factory, providing a single place that managers and plant engineers could use to track factory health.</li>
+                        </ul>
+
+                    <li><strong>Small-Scale Ammonia Plant Design in Aspen Plus (School)</strong></li>
                         <ul>
                             <li>Designed a small-scale ammonia plant that produced 51 metric tons of 99.8 wt% ammonia per day</li>
                             <li>Zero carbon footprint and boasted a $17 million NPC after the 20-year project lifetime</li>
                             <li>Presented at the 2023 UC Davis Engineering Design Showcase to a panel of judges</li>
                             <li>Awarded the Rich Anderson award for having the most comprehensive design out of all group projects</li>
                         </ul>
-                    <li><strong>Process Control Simulation</strong></li>
+
+                    <li><strong>Process Control Simulation (Personal)</strong></li>
                         <ul>
                             <li>Simulated a liquid surge tank in Python with PID controls to track setpoints and attenuate input disturbances</li>
-                            <li>Implemented controller saturation, integral windup mitigation, and Ziegler-Nichols tuning</li>
+                            <li>Implemented controller saturation and Ziegler-Nichols tuning</li>
                             <li>Created a document showing the science and mathematics behind simple systems with controllers and my development of the simulation ("Process Control Simulation - Theory and Implementation" in the Documents page of this website)</li>
                         </ul>
                 </ul>
