@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Frank's Site - Blog</title>
+    <link href="\style.css" rel="stylesheet">
+    <link href="\images/fjv-favicon-2.png" rel="icon" type="/image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind Madurai">
+
+    <!-- For math symbols and equations -->
+    <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- Header at the top of every page of the website -->
+    <header>
+        <div class="columns-box">
+
+            <div>
+                <a href="\index.html"><img src="\images\fjv-favicon-2.png" alt="FJV Favicon Version 1, Pixelated Metal Plate" width="150px" height="150px"></a>
+            </div>
+
+            <div>
+                <h1 style="margin-top: 40px; margin-left: 50px">FJV's Claim - Blog</h1>
+                <h2 style="margin-top: -25px; margin-left: 50px; font-size: 25px">A landing spot for Frank's ramblings and random thoughts</h2>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Page selector underneath the header -->
+    <div style="background-color: rgb(42, 50, 63)" class="columns-box">
+        
+        <a href="\index.html" class="page-selector-links">Home</a>
+        <a href="\blog-main.html" class="page-selector-links">Blog</a>
+        <a href="\how-to.html" class="page-selector-links">How-Tos</a>
+        <a href="\random-pdfs.html" class="page-selector-links">Documents</a>
+        <a href="\curriculum-vitae.html" class="page-selector-links">CV</a>
+        <a href="\about.html" class="page-selector-links">About</a>
+
+    </div>
+
+    <!-- Meat and potatoes of the blog section-->
+    <main>
+        <div class="columns-box">
+
+            <div class="back-button">
+                <a href="\blog-main.html"><p style="color: rgb(180, 194, 218); text-align: center">Go Back</p></a>
+            </div>
+
+            <div class="blog-text">
+                <h1>9/13/2025 - The problem with Intel's work culture</h1>
+
+                <img src="\images\rio-rancho-intel.png" alt="Intel fab in Rio Rancho, NM" width="60%" style="border: 2px solid rgb(42, 50, 63)">
+                <p class="figure-label">Image: aerial view of the offices of Intel's Rio Rancho location.</p>
+
+                <h2>Introduction</h2>
+                <p>With Intel seemingly imploding over the past few months, I feel like I should share my experience working there. I know that there are very few "good" companies to work for nowadays, but it seems like Intel's work culture is particularly harmful to its growth. Though I only worked there for about a year and a half, I feel like I have enough experience to shed some light on what Intel needs to do better at. Let's just say that, yes, I left Intel to pursue my Master's, but the urge to apply for a Master's was fueled by Intel's horrible work culture. Keep in mind, I did sign an NDA when I left, so I will leave many details out.</p>
+
+                <p>For some background, I was hired as a Process Engineer at the Rio Rancho, NM fab called "Fab 9." The fab had just gotten through start-up when I got there, but the module was only producing a fraction of the material that it was expected, so I had to help the module increase its output to reach High-Volume Manufacturing (HVM) levels. This alone comes with countless hurdles to surmount, and the surmounting was all in the hands of a few relatively fresh college graduates with practically no real-world engineering experience. It wouldn't have been so bad for those fresh college grads if it weren't for the abysmal work culture at the US-based Intel fabs, way more on this later.</p>
+
+                <h2>Technician and Engineer Trainings were Almost Nothing</h2>
+                <p>Like I said, when I got hired I was mainly helping with the ramp to HVM, and the start-up phase occurred about 1-2 years prior to me getting hired. From what I heard, though, the Fab 9 start-up was supposed to happen a few years before it did, and it was delayed due to the COVID-19 pandemic. This would be all fine and good, but Intel committed to opening the fab by a certain date that was decided before the pandemic, so the few years that Intel delayed the opening of Fab 9 was wasted time, time that us engineers were expected to make up. Now I don't know if Intel had the option to delay the fab opening or if it was hard-set, but knowing Intel they might have had the option but chose to stick to their guns for some strange reason.</p>
+
+                <p>Because we had much less time for start-up and ramp, every day was crunch time. This not only meant that quality risks from human error and process deviations were hand-waved away, but training was also rushed to oblivion. See, there are certain levels of certifications that technicians and engineers can obtain, with the approximate time it usually takes to obtain them:</p>
+
+                <ul>
+                    <li>L1 - the first level of certification that a technician or engineer obtains. This level certifies that the technician/engineer is able to perform the most basic operations on the equipment and can access basic software and programs that allows them to operate the tool, obtain lots, and send lots off when they're done processing. Obtaining L1 certification takes a few weeks.</li>
+
+                    <li>L2 - the second level of certification that a technician or engineer obtains. This level certifies that the technician/engineer is able to perform all L1 tasks, as well as basic troubleshooting of the equipment, performing some equipment preventative maintenance (PM), and documenting quality events. Obtaining L2 certification should take a few months after obtaining L1 certification.</li>
+
+                    <li>L3 - in most cases this is the most advanced certification that a technician or engineer can obtain. This level certifies that the technician/engineer is able to perform all L1 and L2 tasks, as well as advanced troubleshooting of the equipment, performing advanced equipment PMs, and fixing things that oftentimes have no formal documentation. L3 technicians are often the lead technician for their shift, and work closely with engineers to help plan and execute equipment upgrades and repairs. Because of the level of expertise an L3 certification requires, it is not uncommon for it to take over a year to obtain after obtaining L2 certification.</li>
+                </ul>
+
+                <p>For better or for worse, Fab 9 was forced to greatly expedite the training that both technicians and engineers received. L1 training took about a week, L2 training also took a week, and L3 training took two weeks. Keep in mind, an L3 certification is like the gold standard for anyone in the fab to have -- if you're L3, you're a bona fide expert on your equipment. Needless to say, after a two-week crash course, no one is an expert at anything.</p>
+
+                <p>You see, I get it and I don't. On one hand, you really do need to have some L1s, L2s, and L3s to properly operate your equipment. There are parts of the SOPs that require you to have a certain level of certification, and if you don't have it, then you shouldn't be expected to perform those tasks. If you have no L3s and you need to get the equipment operational ASAP, there's kind of nothing else to do but expedite their training.</p>
+
+                <p>On the other hand, however, these fresh L3s with two weeks of training don't really know much more than an L2. Sure, they were shown a couple cool things over the course of their expedited training, but that by no means makes them an expert. For example, many pieces of equipment utilize cameras to measure things on the scale of microns. If you aren't extremely careful at calibrating the camera, you can kiss your micron-level precision and accuracy goodbye. An L3 with years of experience will be able to consistently calibrate that camera day-in and day-out; an L3 with two weeks of training might not even know the correct procedure to calibrate the camera, let alone do it with the necessary precision.</p>
+
+                <p>And even though technicians and engineers have the same certification levels, if you're an engineer, you're expected to already be an expert at the procedures for all levels. I remember I was 3 months in when I got called at 2am to help technicians go through L3 procedures because one of the pieces of equipment went down. I was newer than all the technicians I helped, yet I had to read these procedures for the first time in my life and lead them. This was definitely not the only occasion either.</p>
+
+                <p>Intel is a massive company that produces billions of dollars worth of consumer-grade hardware. If your equipment is being held together by a rag-tag team of technicians and engineers, then you shouldn't be surprised if there were more quality events than you could shake a stick at.</p>
+
+                <h2>The Engineers Are Held Accountable for Everything</h2>
+                <p>This is something that I noticed is different between the Intel sites based in the US versus ones based overseas. The US sites have a strange affinity for making the engineers accountable for all possible issues that the module can face, and if something happens, like a quality event or equipment misprocessing by a technician, then it's the engineers that get blamed and not the technicians. It's actually super weird, and it was so frustrating that it was probably the first domino that toppled that eventually led to me leaving.</p>
+
+                <p>Picture this: a technician is operating a piece of equipment that needs to align to the (very expensive) Silicon wafer in a very specific way prior to processing, and if it gets misaligned then that whole wafer is practically junk. The SOP says that you should never manually align a wafer, as it introduces human error with the possibility that you misalign the wafer yourself. One L2 technician whom everyone knows goes directly against the SOP and doesn't just manually misalign one wafer, not two wafers, but a total of <em>greater than five</em> wafers by the time I left, and they were reminded several times of the dangers of what they were doing. What did the managers do? They trained them to be L3 and be responsible for more advanced troubleshooting, then tasked the engineers with figuring out a way to prevent it from happening again.</p>
+
+                <p>The technician was not held accountable, in fact they was chosen out of the lot to as trustworthy enough to be trained to handle more extreme scenarios. The engineers were the ones that had to attend countless meetings with Integration engineers, automation engineers, cross-site modules and the factory manager to explain what happened, why it was allowed to happen, and what we plan to do to fix it. Rather than reprimand the technician that caused the problem, train the technicians to a higher standard, or have them be the ones to answer for their actions, all of that responsibility is placed on the engineers and the technician gets to walk away scott-free.</p>
+
+                <p>Picture another scenario: a technician is operating a piece of equipment that accepts a Front-Opening Unified Pod (FOUP), a container that holds Silicon wafers. Once the equipment processes all the wafers in the FOUP, the normal operating procedure is to check all the wafer remnants in the FOUP for any possible signs that could indicate a quality risk during processing. If all the wafer remnants are good, they can be tossed in specific receptacles. Keep in mind, the FOUP is completely processed, meaning all the wafers are done processing, and there are many other signs that indicate that the FOUP is done. In this scenario, however, the equipment had some issue and had to abort processing a FOUP -- it was mid-processing, and doesn't need human intervention at this time. What does this technician do? They look into the FOUP, see that there are a large number of whole, untouched, prestine Silicon wafers, then takes them and tosses them. The combined worth of those wafers was many, many times my salary.</p>
+
+                <p>Can you guess what happened afterwards? The technician was allowed to keep working and the engineers had to attend meetings with the factory manager, where we were tasked with developing an idiot-proof way of operating the tools to prevent this from happening again. The factory manager went as far as to suggest developing a whole new robot that would take the place of the human at this specific processing step.</p>
+
+                <p>The common theme is that the US-based Intel sites hire incapable people and expect the engineers to deal with the consequences, rather than hiring technicians with a proven track record or at least provide them with the literal minimum level of training. Now I'm not saying that you need to be a genius to work at Intel (you definitely don't, how do you think I got hired there), but there were times when I totally lost hope for humanity when I saw what some technicians were doing.</p>
+
+                <p>It's like the total backwards way of thinking in my opinion. The fab is still growing, nothing is set in stone yet. The engineering team does not have the capacity to develop entirely new methods, procedures, or even robots to prevent problems from happening. The easiest, most straightforward way to fix the issue is to ask the technician straight up why the f**k they would do something stupid like that. And the best part about that, is that it requires no engineering to do! The technician's manager should be the one asking the questions, referencing the SOP, and disciplining the technician for doing something against the SOP. No part about this requires an engineer, yet here we were, the technician's manager asking the engineers to go through the documentation with the technician. It was infuriating, because it would happen pretty much week after week. You would sit at home over the weekend about to have an anxiety attack because you just knew some stupid things happened over the course of two days that will dictate if your next 1-2 weeks will be hell or not.</p>
+
+                <h2>Hardly Any Separation of Expectations, Engineers Pick Up the Slack</h2>
+                <p>One other extremely annoying thing was that there were hardly any separation of expectations between different modules, managers, and departments. Typically, most of the work was just offloaded onto the engineers, meaning that the engineers were part manager, Integration, QnR, technician, and Field Service Engineer (FSE, the guys from the companies that make the equipment and help us when they have issues).</p>
+
+                <p>Was there an issue with a technician following the wrong part of the SOP, causing a data issue during processing and it will take several days to fix? Tell the engineer to talk to the technician themself, there needs to be transparency within the module. Oh wait, that's the technician's manager's job? Well, the engineer is the expert on the SOP, the manager couldn't possibly know exactly what the right procedure is, you might as well have the engineer do all the talking. Oh, and while the engineer is at it, have them ask the technicians why the equipment has so many alarms; after all, they know the equipment inside and out, so they know what questions to ask!</p>
+
+                <p>Was there an issue with the program files that were required to process a specific type of material? Well, tell the engineer to reach out to other Intel sites for guidance. Oh wait, that's Integration's job? Well, tell the engineer it won't hurt to get involved! Oh, also engineers, your module has caused several more quality issues downstream, and we're here to ask you to complete some impossible tasks, if you have time?</p>
+
+                <p>Was there a quality issue with one of the lots the your equipment processed? Well, what do the engineers think needs to be done? Oh wait, that's QnR's job? Well, the engineers are the ones that know their equipment best and can tell us what types of quality risks we should be seeing downstream, so they should make the final call. Oh, and by the way engineers, there was another quality event that happened at a totally different Intel site that was not caused by your module, but we weren't able to figure that out so we blamed you, can you join a meeting to discuss?</p>
+
+                <p>Was there an issue with the equipment that the L1 and L2 technicians couldn't figure out? Ask the engineer to come to the fab to figure out what's wrong and fix it! Oh wait, that's the L3 technician's job? Well, the L3 was only given 2 weeks to train, and besides, you're the engineer! You're the one with the ongodly-high expectations, and if there's an issue with the tool or SOP, you're the one that's supposed to fix it so the technicians can do their jobs!</p>
+
+                <p>Was there a really bad issue with the equipment that left everyone stumped? Ask the engineer to fix it, the expert on the floor! Oh wait, that's the FSE's job? Well, the FSE is out sick this week, so the engineer will need to own the repair. And if the repair is done wrong, we'll ask the engineer why it was done wrong and have them reflect on their career choice! Oh wait, many of the engineers are newer than our technicians? Big whoop, they went to college, they're smart, they can figure it out!</p>
+
+                <h2>Meetings and Meetings and Meetings and...</h2>
+                <p>Not sure if this is even a surprise, but Intel has fallen into the "more meetings = more productivity" trap. The work day is supposed to start at 7am, but you show up at 6:45am to gown up and get to the fab and gather information for your 7am meeting. Once the 7am meeting is over, you have about 1-2 hours of working in the fab before you have a meeting about quality events, then another hour before you have a meeting that focuses on getting your module's output up. Then you have about an hour before lunch. Get back from your lunch break and immediately go to an area-wide quality meeting with the department manager. Once that's done you run over to an equipment issue meeting, and finally you have an hour of time to work on stuff. But don't work too much, because you have to go to the end-of-day meeting with your team, then go home. But what's this, there's another meeting with other modules from international Intel sites that goes over issues they're seeing and their solutions? And this one happens after work hours too, yay!</p>
+
+                <p>On the more meeting-heavy days, you probably have 2-3 hours of time to actually do your own work. Here is where the classic question of "how do I get work done when all I do is go to meetings talking about me getting my work done?" comes in. To make it even worse, if you're one of the more senior engineers on the team and other teams know you, they often ask you to join their meetings for expertise or questioning about quality events.</p>
+
+                <p>Don't forget that because you're an engineer, you're supposed to also be on top of knowing what happens to the equipment and any issues that arise throughout the day, so you better be prepared with that information by the end-of-day meeting for your manager.</p>
+
+                <h2>In Conclusion</h2>
+                <p>In conclusion, I hated working at Intel. The work culture is so backwards, lending itself more towards regression rather than progression. The trainings that were provided were so haphazard and short that it's no surprise there was nary a shred of expertise gained. There was also way too much emphasis on "engineer fix problem" that they ignored any other path towards improvements, namely making sure the technicians were held accountable for at least some of the things they did. Lastly, but not leastly, there were meetings out the wazoo, and some days there were so many meetings you couldn't get any actual work done. I have no clue if any of these examples speaks to the entirety of Intel imploding on itself, but I feel that if these types of issues are happening at this operating level, some other shenanigans have got to be happening higher up the food chain. But what do I know, I was just a lowly engineer fighting for my life in the trenches.</p>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer at the bottom of every page of the website-->
+    <footer>
+        <div class="columns-box">
+
+            <div class="footer-columns">
+                <p>Created by <strong style="color: rgb(180, 194, 218)">Frank J. Vilimek (FJV)</strong></p>
+            </div>
+
+            <div class="footer-columns">
+                <p><u>Contact and Socials:</u></p>
+                <p><img src="\images\gmail-logo.png" alt="Gmail Logo" height="15px" width="22px"> frankvilimek@gmail.com</p>
+                <p><a href="https://www.youtube.com/@FJV_YT" target="_blank"><img src="\images\youtube-logo.png" alt="YouTube Logo" height="15px" width="22px"> YouTube</a></p>
+                <p><a href="https://www.linkedin.com/in/frankjv/" target="_blank"><img src="\images\linkedin-logo.png" alt="LinkedIn Logo" height="20px" width="20px"> LinkedIn</a></p>
+                <p><a href="https://www.instagram.com/tasty_kun/" target="_blank"><img src="\images\instagram-logo.png" alt="Instagram Logo" height="20px" width="20px"> Instagram</a></p>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>
