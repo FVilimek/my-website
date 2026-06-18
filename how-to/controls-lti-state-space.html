@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Frank's Site - How-To</title>
+    <link href="../style.css" rel="stylesheet">
+    <link href="../images/fjv-favicon-2.png" rel="icon" type="image/x-icon">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind Madurai">
+
+    <!-- For math symbols and equations -->
+    <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@4.0.0/tex-mml-chtml.js">
+    </script>
+</head>
+
+<body>
+
+    <!-- Header at the top of every page of the website -->
+    <header>
+        <div class="columns-box">
+
+            <div>
+                <a href="../index.html"><img src="../images/fjv-favicon-2.png" alt="FJV Favicon Version 1, Pixelated Metal Plate" width="150px" height="150px"></a>
+            </div>
+
+            <div>
+                <h1 style="margin-top: 40px; margin-left: 50px">FJV's Claim - How-To</h1>
+                <h2 style="margin-top: -25px; margin-left: 50px; font-size: 25px">Random things Frank wants to teach you about</h2>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- Page selector underneath the header -->
+    <div style="background-color: rgb(42, 50, 63)" class="columns-box">
+        
+        <a href="../" class="page-selector-links">Home</a>
+        <a href="../blog-main.html" class="page-selector-links">Blog</a>
+        <a href="../how-to.html" class="page-selector-links">How-Tos</a>
+        <a href="../random-pdfs.html" class="page-selector-links">Documents</a>
+        <a href="../curriculum-vitae.html" class="page-selector-links">CV</a>
+        <a href="../about.html" class="page-selector-links">About</a>
+
+    </div>
+
+    <main>
+        <div class="columns-box">
+
+            <div class="back-button">
+                <a href="../how-to.html"><p style="color: rgb(180, 194, 218); text-align: center">Go Back</p></a>
+            </div>
+
+            <div class="blog-text">
+                <h1>Process Control - LTI State-Space Model</h1>
+
+                <h2>Contents</h2>
+                <ul>
+                    <li><a class="page-navigator-button" href="#overview">Overview</a></li>
+                    <li><a class="page-navigator-button" href="#generalized-model">Generalized Model</a></li>
+                    <li><a class="page-navigator-button" href="#linearization">Linearization</a></li>
+                    <li><a class="page-navigator-button" href="#continuous-model">Continuous Model</a></li>
+                    <li><a class="page-navigator-button" href="#discrete-model">Discrete Model</a></li>
+                    <li><a class="page-navigator-button" href="#summary">Summary</a></li>
+                </ul>
+
+                <h2 id="overview">Overview</h2>
+                <p>The state-space model is a standard representation of a dynamic system that is incredibly powerful in its application. It is used across the many fields within process control and beyond due to its strengths in describing the evolution of systems with autonomous dynamics or systems with inputs (controlled inputs, disturbances, noise, etc.). It naturally lends itself to multiple-input, multiple-output (MIMO) systems, which are control methods that use all the values of the current states to calculate control inputs to control them all simultaneously. Contrast this with something like PID control, which is a single-input, single-output (SISO) control method and is only really able to take one state into account to calculate one control input. The form of the state-space model is as follows:
+                    $$\begin{aligned} \dot{x} &= Ax + Bu \\ y &= Cx + Du. \end{aligned}$$
+                </p>
+
+                <p>As soon as we take the plunge into using state-space models to describe system dynamics, we need to start thinking in terms of linear algebra. From now on, most everything is either a vector or matrix---don't worry, though, the dimensions of each quantity is usually stated, so you know what rank of tensor you're dealing with. In the state-space model, the quantities are:</p>
+                <ul>
+                    <li>\(x \in \mathbb{R}^n\) is the state vector, an \((n \times 1)\)-dimensional column vector containing the system states at the current time</li>
+                    <li>\(u \in \mathbb{R}^m\) is the input vector, an \((m \times 1)\)-dimensional column vector containing the inputs to the system at the current time</li>
+                    <li>\(y \in \mathbb{R}^p\) is the output vector, a \((p \times 1)\)-dimensional column vector containing the measured states at the current time</li>
+                    <li>\(A \in \mathbb{R}^{n \times n}\) is the state matrix, an \((n \times n)\)-dimensional matrix containing the autonomous behavior of the system</li>
+                    <li>\(B \in \mathbb{R}^{n \times m}\) is the input matrix, an \((n \times m)\)-dimensional matrix containing the system behavior given a specific input</li>
+                    <li>\(C \in \mathbb{R}^{p \times n}\) is the output matrix, a \((p \times n)\)-dimensional matrix containing the mapping from the system's actual states \(x\) to the measured states \(y\). We often set \(C = I\), but not all the time</li>
+                    <li>\(D \in \mathbb{R}^{p \times m}\) is the feedthrough matrix, a \((p \times m)\)-dimensional matrix containing the measurement behavior given a specific input. Typically we set \(D = 0\)</li>
+                </ul>
+
+                <p>Now it must be noted that this state-space model is linear time-invariant, or LTI. Linear equations are very useful because they have predictable behavior---think about the line \(y = mx + b\), there's not much else going on there other than the slope and intercept. We often prefer working with linear equations because of this predictable behavior, and it makes the math work out much nicer. It is also time-invariant, meaning that the \(A\), \(B\), \(C\), and \(D\) matrices, which govern the system's inherent behavior, do not change with time.</p>
+
+                <p>We will be focusing on LTI systems, but please be aware that most real-world systems are not LTI systems, and if you want to take the further plunge to describe nonlinear, time-varying systems, you would need to study up on nonliner dynamics and control.</p>
+
+                <h2 id="generalized-model">Generalized Model</h2>
+                <p><em>Every</em> dynamic system can be represented as a state-space model, meaning it can have first-order derivatives, second-order derivatives, \(n\)-th order derivatives, and it can be described using the state-space model. Let's start with a simple first-order example:
+                    $$\dot{x} = ax + bu$$
+                </p>
+
+                <p>In this case, nothing needs to happen because the state \(x\) is a scalar quantity, as well as \(a\) and \(b\). Let's move it up to second-order:
+                    $$\begin{aligned} \dot{x}_1 &= a_1 x_1 + b_1 u_1 \\ \dot{x}_2 &= a_2 x_2 + b_2 u_2 \end{aligned}$$
+                </p>
+
+                <p>We now have two states to worry about, each with their specific dynamics. Let us now define:
+                    $$x = \begin{bmatrix} x_1 \\ x_2 \end{bmatrix}, \qquad A = \begin{bmatrix} a_1 & 0 \\ 0 & a_2 \end{bmatrix}, \qquad B = \begin{bmatrix} b_1 & 0 \\ 0 & b_2 \end{bmatrix}$$
+                </p>
+
+                <p>which means that the state-space model is:
+                    $$\begin{gathered} \begin{bmatrix} \dot{x}_1 \\ \dot{x}_2 \end{bmatrix} = \begin{bmatrix} a_1 & 0 \\ 0 & a_2 \end{bmatrix}\begin{bmatrix} x_1 \\ x_2 \end{bmatrix} + \begin{bmatrix}b_1 & 0 \\ 0 & b_2 \end{bmatrix}\begin{bmatrix} u_1 \\ u_2 \end{bmatrix} \\ \dot{x} = Ax + Bu. \end{gathered}$$
+                </p>
+
+                <p>This same idea can be extended to an \(n\)-th order system:
+                    $$x^{(n)} + a_{n - 1}x^{(n - 1)} + a_{n - 2}x^{(n - 2)} + \ldots + a_1x^{(1)} + a_0x = b_0 u$$
+                </p>
+
+                <p>where, to describe this as a state-space model, you would just need to have each \(n\)-th derivative is its own state in the state vector \(x\):
+                    $$x = \begin{bmatrix} x \\ x^{(1)} \\ x^{(2)} \\ \vdots \\ x^{(n - 1)} \\ x^{(n)} \end{bmatrix}$$
+                </p>
+
+                <p>which would inherently also mean you'd have to modify your \(A\), \(B\), \(C\), and \(D\) matrices to account for the new states, but assuming you know the equations to describe each of those derivatives, this is actually a pretty simple task. Let's apply this to an example, an inverted pendulum; the dynamics are:
+                    $$\begin{aligned} \dot{x}_1 &= x_2 \\ \dot{x}_2 &= -\frac{g}{l}\sin(x_1) + \frac{1}{ml^2}u \end{aligned}$$
+                </p>
+
+                <p>where \(x_1 = \theta\) (the angle of the pendulum relative to vertical), \(x_2 = \dot{\theta}\) (the angular velocity of the pendulum), \(g\) is the gravitational acceleration, \(l\) is the length of the pendulum arm, and \(m\) is the mass of the pendulum. This means that our state-space model is:
+                    $$\begin{bmatrix} \dot{x}_1 \\ \dot{x}_2 \end{bmatrix} = \begin{bmatrix} 0 & 1 \\ -\frac{g}{l}\sin(x_1) & 0 \end{bmatrix} + \begin{bmatrix}0 \\ \frac{1}{ml^2} \end{bmatrix}u$$
+                </p>
+
+                <p>However, notice how the state matrix is nonlinear due to the \(\sin(x_1)\). Though this nonlinear equation describes the system perfectly, there are difficulties that will come later on if we want to make guarantees regarding optimization. To deal with this, we'll have to linearize it.</p>
+
+                <h2 id="linearization">Linearization</h2>
+                <p>Linearizing a nonlinear system to be LTI is quite simple, and draws upon a concept from calculus 3: the Jacobian matrix. Intuitively, a Jacobian matrix is the matrix-vector-equivalent of taking the Taylor series for scalar functions up to the linear term. It's the linear approximation of a system's behavior around a certain operating point. By finding the Jacobian of the states with respect to different quantities, we obtain the \(A\) and \(B\) matrices; for the nonlinear system,
+                    $$\begin{aligned} \dot{x}_1 &= f_1(x, u) \\ \dot{x}_2 &= f_2(x, u) \\ \vdots \\ \dot{x}_{n - 1} &= f_{n - 1}(x, u) \\ \dot{x}_n &= f_n(x, u) \end{aligned}$$
+                </p>
+
+                <p>with output dynamics,
+                    $$\begin{aligned} y_1 &= g_1(x, u) \\ y_2 &= g_2(x, u) \\ \vdots \\ y_{p - 1} &= g_{p - 1}(x, u) \\ y_n &= g_p(x, u) \end{aligned}$$
+                </p>
+
+                <p>the \(A\) and \(B\) matrices are:
+                    $$A = \left.\frac{\partial f}{\partial x}\right|_{x_{eq}, u_{eq}} = \begin{bmatrix} \frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} & \cdots & \frac{\partial f_1}{\partial x_n}  \\ \frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} & & \vdots  \\ \vdots & & \ddots & \\ \frac{\partial f_n}{\partial x_1} & \cdots & & \frac{\partial f_n}{\partial x_n} \end{bmatrix}, \qquad B = \left.\frac{\partial f}{\partial u}\right|_{x_{eq}, u_{eq}} = \begin{bmatrix} \frac{\partial f_1}{\partial u_1} & \frac{\partial f_1}{\partial u_2} & \cdots & \frac{\partial f_1}{\partial u_m}  \\ \frac{\partial f_2}{\partial u_1} & \frac{\partial f_2}{\partial u_2} & & \vdots  \\ \vdots & & \ddots & \\ \frac{\partial f_n}{\partial u_1} & \cdots & & \frac{\partial f_n}{\partial u_m} \end{bmatrix}$$
+                </p>
+
+                <p>and the \(C\) and \(D\) matrices are:
+                    $$C = \left.\frac{\partial g}{\partial x}\right|_{x_{eq}, u_{eq}} = \begin{bmatrix} \frac{\partial g_1}{\partial x_1} & \frac{\partial g_1}{\partial x_2} & \cdots & \frac{\partial g_1}{\partial x_n}  \\ \frac{\partial g_2}{\partial x_1} & \frac{\partial g_2}{\partial x_2} & & \vdots  \\ \vdots & & \ddots & \\ \frac{\partial g_p}{\partial x_1} & \cdots & & \frac{\partial g_p}{\partial x_n} \end{bmatrix}, \qquad D = \left.\frac{\partial g}{\partial u}\right|_{x_{eq}, u_{eq}} = \begin{bmatrix} \frac{\partial g_1}{\partial u_1} & \frac{\partial g_1}{\partial u_2} & \cdots & \frac{\partial g_1}{\partial u_m}  \\ \frac{\partial g_2}{\partial u_1} & \frac{\partial g_2}{\partial u_2} & & \vdots  \\ \vdots & & \ddots & \\ \frac{\partial g_p}{\partial u_1} & \cdots & & \frac{\partial g_p}{\partial u_m} \end{bmatrix}$$
+                </p>
+
+                <p>We can now define the deviation variables,
+                    $$x' = x - x_{eq}, \qquad u' = u - u_{eq}, \qquad y' = y - y_{eq}$$
+                </p>
+
+                <p>which allows us to define our linearized state-space model:
+                    $$\begin{aligned} \dot{x}' &= Ax' + Bu' \\ y' &= Cx' + Du' \end{aligned}$$
+                </p>
+
+                <p>However, using somewhat abusive notation, it is widely understood that \(x = x'\), \(u = u'\), and \(y = y'\), so we don't have to carry around any cumbersome notation. Applying this to the inverted pendulum example from earlier, we find that,
+                    $$A = \begin{bmatrix} \frac{\partial f_1}{\partial x_1} & \frac{\partial f_1}{\partial x_2} \\ \frac{\partial f_2}{\partial x_1} & \frac{\partial f_2}{\partial x_2} \end{bmatrix} = \begin{bmatrix} 0 & 1 \\ -\frac{g}{l}\cos(x_{eq}) & 0 \end{bmatrix}, \qquad B = \begin{bmatrix} \frac{\partial f_1}{\partial u}\\ \frac{\partial f_2}{\partial u} \end{bmatrix} = \begin{bmatrix} 0 \\ \frac{1}{ml^2}\end{bmatrix}$$
+                </p>
+
+                <p>and we can represent it as a standard LTI state-space model,
+                    $$\dot{x} = Ax + Bu$$
+                </p>
+                
+                <h2 id="continuous-model">Continuous Model</h2>
+                <p>Practically all dynamic systems in the real-world are continuous in time, meaning there really isn't a system that inherently operates step-wise at discrete intervals. For example, the concentration and temperature changes after an exothermic reaction are smooth, continuous functions. In this case, continuous state-space models capture the "true" behavior of the system, in the sense that there are no discontinuities in the states over time.</p>
+
+                <p>We can actually solve the state-space model just as any other differential equation, using integrating factors. We start by left-multiplying both sides by the integrating factor \(\mu = e^{-At}\) to obtain,
+                    $$\begin{gathered} e^{-At}\dot{x} - e^{-At}Ax = e^{-At}Bu  \\ \frac{d}{dt}\left(e^{-At}x\right) = e^{-At}Bu \\ \boxed{x(t) = e^{A(t - t_0)}x_0 + \int_{t_0}^t e^{A(t - \tau)}Bu(\tau)d\tau} \end{gathered}$$
+                </p>
+
+                <p>This equation describes the evolution of the states given any input. It looks a little complicated with the convolution integral, but all that's really doing is taking into account the cumulative effects of the input over time. We can, however, simplify it if we consider an explicit control law, namely a linear control law,
+                    $$u = -Kx$$
+                </p>
+
+                <p>where \(K\) is the controller gain matrix. Substituting this in the normal state-space model we get:
+                    $$\begin{gathered} \dot{x} = Ax + Bu \\ \dot{x} = Ax + B(-Kx) \\ \dot{x} = (A - BK)x \end{gathered}$$
+                </p>
+
+                <p>which is perhaps the most simple differential equation to solve:
+                    $$\boxed{x(t) = e^{(A - BK)(t - t_0)}x_0}$$
+                </p>
+
+                <p>This result makes it quite clear that the behavior of the controlled system now depends on the choice of \(K\), which is calculated by a control engineer. We notice that when \(A - BK \succ 0\) the exponential will continuously increase over time, meaning that the states will deviate from the reference point and the system is not stable; when \(A - BK \prec 0\), the system is stable and will continuously get closer to the origin, so \(K\) must be chosen such that the quantity \(A - BK \preceq 0\), which is otherwise known as a <em>Hurwitz matrix</em> (a matrix whose eigenvalues all have a strictly negative real part).</p>
+
+                <p>Calculation of \(K\) depends on which method you use: full-state feedback has you manually choosing the poles of the transfer function such that they all lie on the left-half of the \(s\)-plane, whereas the linear-quadratic regulator (LQR) calculates a \(K\) such that the state and input trajectories are optimal---more on optimality in other how-tos.</p>
+
+                <h2 id="discrete-model">Discrete Model</h2>
+                <p>Though real-world systems are continuous, discretizing them is necessary when doing discrete-time calculations, such as obtaining the series of optimal constrained control inputs. This discretization is <em>not</em> the same as the finite difference approximation that's used to describe an ODE in a discrete manner, as this approximation fundamentally changes the behavior of the system whereas the continuous-to-discrete transformation for state-space models does not.</p>
+
+                <p>To discretize a continuous model, we consider the evolution of the state from a time \(t = t_0\) to \(t = t_0 + \Delta\), where \(\Delta\) is often called the <em>sampling period</em>. The solution to the state-space model is thus,
+                    $$x(t_0 + \Delta) = e^{A(t_0 + \Delta - t_0)}x(t_0) + \int_{t_0}^{t_0 + \Delta} e^{A(t_0 + \Delta - \tau)}Bu(\tau)d\tau$$
+                </p>
+
+                <p>The problem is made simpler by considering a zero-order hold (ZOH) controller, or a controller that keeps the same control input \(u\) over the duration of the sampling period. This allows us to evaluate the integral to get a close-form solution for the state evolution:
+                    $$x(t_0 + \Delta) = e^{A\Delta}x(t_0) + A^{-1}(e^{A\Delta} - I)Bu(t_0)$$
+                </p>
+
+                <p>We can now define \(x_{k} = x(t_0)\), \(x_{k + 1} = x(t_0 + \Delta)\), \(u_k = u(t_0)\), \(A_d = e^{A\Delta}\), and \(B_d = A^{-1}(e^{A\Delta} - I)B\) to obtain the discrete-time state-space model,
+                    $$\boxed{x_{k + 1} = A_dx_k + B_du_k}$$
+                </p>
+
+                <p>We can do the same thing as the continuous model and consider the linear control law,
+                    $$u_k = -Fx_k$$
+                </p>
+
+                <p>where \(F\) is the discrete-time controller gain. Substitution into the state-space model yields,
+                    $$\boxed{x_{k + 1} = (A_d - B_dF)x_k}$$
+                </p>
+
+                <p>Keep in mind that this is no longer a differential equation, so this equation can be used to easily calculate the state evolution without approximations. Similar to the continuous case, we now require that the quantity \(A_d - B_dF \prec 1\) in order for the states to be stable---if \(A_d - B_dF \succ 1\), then \(x_{k + 1}\) would always be larger than \(x_k\), meaning that the states would grow without bound.</p>
+
+                <p>Like \(K\), the value of \(F\) can be calculated in various ways. For example, the LQR approach requires that you solve the discrete-time algebraic Riccati equation to obtain \(F\).</p>
+
+                <h2 id="summary">Summary</h2>
+                <p>In summary, the state-space model to describe dynamic systems is incredibly powerful and allows us to standardize the way we handle system dynamics, especially in the context of process control. The underlying idea of the state evolution depending on the current state and an input is simple in concept but huge in terms of application. Being a MIMO control method, it is superior to SISO control methods due to its strengths in dealing with many states and many inputs simultaneously, ensuring that the entire system is controlled and not just one portion. We will be using LTI state-space models extensively in our modules about process control.</p>
+                
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Footer at the bottom of every page of the website-->
+    <footer>
+        <div class="columns-box">
+
+            <div class="footer-columns">
+                <p>Created by <strong style="color: rgb(180, 194, 218)">Frank J. Vilimek (FJV)</strong></p>
+            </div>
+
+            <div class="footer-columns">
+                <p><u>Contact and Socials:</u></p>
+                <p><img src="../images/gmail-logo.png" alt="Gmail Logo" height="15px" width="22px"> frankvilimek@gmail.com</p>
+                <p><a href="https://www.youtube.com/@FJV_YT" target="_blank"><img src="../images/youtube-logo.png" alt="YouTube Logo" height="15px" width="22px"> YouTube</a></p>
+                <p><a href="https://www.linkedin.com/in/frankjv/" target="_blank"><img src="../images/linkedin-logo.png" alt="LinkedIn Logo" height="20px" width="20px"> LinkedIn</a></p>
+                <p><a href="https://www.instagram.com/tasty_kun/" target="_blank"><img src="../images/instagram-logo.png" alt="Instagram Logo" height="20px" width="20px"> Instagram</a></p>
+            </div>
+
+        </div>
+    </footer>
+
+</body>
+</html>
