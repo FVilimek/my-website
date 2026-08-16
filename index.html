@@ -56,6 +56,9 @@
 
             <h1>Feed</h1>
 
+            <h2>August 16, 2026 - New Document: "Bounded Lyapunov-Based Controllers for Linearized Non-Isothermal CSTR"</h2>
+            <p>I uploaded a new PDF document where I explore a little bit of bounded Lyapunov-based controllers. Though Lyapunov-based methods excel when dealing with nonlinear models, we want to see how they respond to linear models and what sort of linear, explicit relationships we can glean from the equations. This was an introductory foray into Lyapunov-based control, and hopefully over the coming weeks I can delve more into its intracacies.</p>
+
             <h2>July 2, 2026 - New Document: "Imposing a Linear Control Law Through MPC"</h2>
             <p>Just uploaded a new PDF document showing an approach on imposing a linear control law through MPC. MPC, by design, does not employ a linear control law on its own, and instead chooses the control inputs such that the cost is minimized while also keeping constraints in mind. In this document, instead of controlling a "normal" actuator (like inlet flow rate), I chose to control the gain of a linear control law. The equilibrium gain is zero, which allows the autonomous system (controlled via LQR) to do its thing, which we know is optimal in terms of the state-input cost but does not handle constraints. The results are quite interesting: when the states are not near their constraints, MPC chooses the gain to be 0, but when the states approach their constraints, MPC must change the gain to avoid violating the constraints. This gets me one step closer to potentially being able to describe implicit systems (i.e. systems controlled via MPC) through results found using explicit systems (i.e. systems controlled via LQR/full-state feedback). Give it a read!</p>
     
@@ -72,7 +75,7 @@
 
             <div class="footer-columns">
                 <p>Created by <strong style="color: rgb(180, 194, 218)">Frank J. Vilimek (FJV)</strong></p>
-                <p>Site last updated: 7/2/2026</p>
+                <p>Site last updated: 8/16/2026</p>
             </div>
 
             <div class="footer-columns">
